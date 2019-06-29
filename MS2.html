@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<title>Twitter Page</title>
+
+<style>
+.profile_image img {-moz-border-radius: 15px;
+border-radius: 15px;
+box-shadow: 10px 10px 5px #888;}
+
+@font-face { font-family: Channel; src: url('Channel.ttf');}
+#name{font-size: 30pt;
+      font-family: Channel;
+	  text-shadow:10px 10px 5px #888;}
+	  
+#followers img {border-radius: 36px;}
+
+</style>
+
+
+</head>
+
+<body>
+<!--FIRST DIV-->
+<div class="profile_image">
+</div>
+<!--END FIRST DIV-->
+
+<!--Second DIV-->
+<div id="name">
+<script>
+var result;
+var name;
+
+function readXMLData(name1)
+{
+         name  = name1;
+
+         $.ajax({
+            type: "GET",
+            url: 'show.xml',
+            dataType: 'xml',
+            success: parse,
+            error: loadfail
+        });
+}
+   function loadfail()
+   {
+       alert("Error");
+   }
+
+   function parse(document)
+   {
+        $(document).find(name).each(function(){
+             result = $(this).find('value').text();
+			 document.write('<p>: ' + result + '</p>');
+        });
+   }
+   
+</script>
+</div>
+<!--END Second DIV-->
+
+<!--Third DIV-->
+<div id="bio">
+</div>
+<!--END Third DIV-->
+
+<!--Forth DIV-->
+<div>
+</div>
+<!--END Forth DIV-->
+
+<!--Fifth DIV-->
+<div id="followers">
+</div>
+<!--END Fifth DIV-->
+</body>
+</html>
